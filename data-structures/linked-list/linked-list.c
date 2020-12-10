@@ -1,108 +1,98 @@
-/* This is a standard, singly linked list */
 // Pre-processor directives
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 
-// Struct definitons
-typedef struct node node;
+// Struct definitions
+typedef struct Node Node;
 
-struct node {
-	int val;
-	node * next;
+struct Node {
+	Node * next;
+	int data;
 };
 
-// Prototypes
-void insertNodeFront(node * head, int val);
-void insertNodeBack(node * head, int val);
-void deleteNode(node * node);
-void deleteList(node * head);
+// Function prototypes
+void printList(Node * head);
+Node * newNode(int data);
+Node * addToBack(Node * head, int data);
+Node * addToFront(Node * head, int data);
+void freeList(Node * head);
 
-//findNode()
-//countNodes()
-//editNode()
-
-void printList(node * head);
-
-
-// Main function
+// Main method
 int main() {
-	node * head;
-	insertNodeFront(head, 20);
+	Node * head = NULL;
 
-	deleteList(head);
+	for (int i = 0; i < 10; i++) {
+		if (i & 1) {
+			head = addToBack(head, i);
+		}
+		else {
+			head = addToFront(head, i);
+		}
 
+		printList(head);
+	}
+	
+	freeList(head);
 	return 0;
-}
 
+}
 
 // Function definitons
-void insertNodeFront(node * head, int val) {
-	node * newNode = malloc(sizeof(node));
-	
-	if (head == NULL) {
-		head = newNode;
-		head->next = NULL;
-		head->val = val;
+void printList(Node * head) {
+
+	// Base case
+	if (head ==  NULL) {
+		printf("NULL\n");
 		return;
 	}
 
-	newNode->next = head;
-	newNode->val = val;
+	printf("%d-> ", head->data);
 
-	head->next = NULL;
-	
+	printList(head->next);
 }
 
-void insertNodeBack(node * head, int val) {	
-	node * newNode = malloc(sizeof(node));
+Node * newNode(int data) {
+	Node * ret;
 
-	if (head == NULL) {
-		head = newNode;
-		head->next = NULL;
-		head->val = val;
-		return;
-	}
+	ret = calloc(1, sizeof(Node));
 
-	if (head->next == NULL) {
-		head->next = newNode;
-		newNode->val = val;
-		newNode->next = NULL;
-		return;
-	}
+	ret->data = data;
+	ret->next = NULL;
 
-	node * tmp = head;
-
-	while(tmp->next != NULL) {
-		tmp = tmp->next;	
-	}	
-
-	tmp->next = newNode;
-	newNode->next = NULL;
-	newNode->val = val;
+	return ret;
 }
 
-
- 
-void deleteList(node * head) {
-	node * tmp = head;
-	
-	while (tmp->next != NULL) {
-		tmp = tmp->next;
-		free(head);
-		head = tmp;
+Node * addToBack(Node * head, int data) {
+	if (head == NULL) {
+		head = newNode(data);
+		return head;
 	}
 
+	head->next = addToBack(head->next, data);
+
+	return head;
+}
+
+Node * addToFront(Node * head, int data) {
+	Node * newHead = newNode(data);
+
+	newHead->next = head;
+
+	return newHead;
+}
+
+void freeList(Node * head) {
+	if (head == NULL) {
+		printf("NULL\n");
+		return;
+	}
+
+	Node * tmp = head;
+	
+	printList(tmp);
+	freeList(tmp->next);
 	free(tmp);
 
+	return;
 }
-
-
-
-
-
-
-
-
-
-
 

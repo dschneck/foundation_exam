@@ -22,19 +22,25 @@ void pop(Node * head); // Stack function
 void top(Node * head); // Stack function
 
 void freeList(Node * head);
+void printList(Node * head);
 
 // Main method
 int main() {
+
 	Node * stack;
 
 	for (int i = 0; i < 20; i++) {
+		printf("Pushing %d", i);
 		push(stack, i);
 		
 		if (i & 1) {
 			top(stack);
+			continue;
 		}
 	}
 	
+	printList(stack);
+
 	top(stack);
 
 	pop(stack);
@@ -68,7 +74,7 @@ Node * addToFront(Node * head, int val) {
 }
 
 void push(Node * head, int val) {
-	addToFront(head, val);
+	head = addToFront(head, val);
 
 }
 
@@ -77,8 +83,13 @@ void freeNode(Node * head) {
 		printf("Node was NULL\n");
 		return;
 	}
+	
+	Node * tmp = head;
+	tmp= head->next;
 
 	free(head);
+
+	freeNode(tmp);
 }
 
 
@@ -116,7 +127,17 @@ void freeList(Node * head) {
 	free(tmp);
 }
 
+void printList(Node * head) {
+	Node * tmp;
 
+	printf("%d", tmp->val );
+
+	while (tmp->next != NULL) {
+		tmp = tmp->next;
+		printf("%d\n", tmp->val);
+	}
+
+}
 
 
 

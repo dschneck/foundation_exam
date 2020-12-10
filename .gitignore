@@ -1,2 +1,4 @@
 // Swp files
 *.swp
+
+.out
