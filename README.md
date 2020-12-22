@@ -16,4 +16,4 @@ Week | Modules | Sorting | Exam Review |
 5 | Dynamic Memory Management in C - Tracing/Coding & Brute Force Tools| Quick Sort| N/A |
 
 
-# T - 36 DAYS UNTIL EXAM
+# T - 26 DAYS UNTIL EXAM
