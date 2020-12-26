@@ -12,11 +12,11 @@ void swap(int * arr, int a, int b) {
 
 void printList(int * arr) {
 	for (int i = 0; i < N; i++) {
-		if (i == N-1) printf("%d", arr[i]);
+		if (i == N-1) printf("%d.", arr[i]);
 		else printf("%d, ", arr[i]);
 	}
 
-	printf("\n");
+	printf("\n\n");
 }
 
 int * generateList() {
