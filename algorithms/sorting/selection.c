@@ -22,7 +22,7 @@
 // Pre-processor directives
 #include <stdio.h> 
 #include <stdlib.h>
-#define N 20
+#define N 10000
 
 // Function declarations
 void swap(int * arr, int a , int b);

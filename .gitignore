@@ -1,6 +1,6 @@
 // Swp files
 *.swp
 
-.out
+*.out
 
 .DS_STORE

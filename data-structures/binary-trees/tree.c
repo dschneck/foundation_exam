@@ -24,6 +24,7 @@ struct node {
 
 // Function declaration
 node * newNode(int val);
+void freeTree(node * root);
 
 // All of the following print methods are 
 // examples of depth first traversals
@@ -34,6 +35,18 @@ void postorderPrint(node * root);
 // Main method
 int main() {
 	node * root = newNode(1);
+	int val;
+
+	printf("Input a value to insert into the tree (-1 to stop) \n");
+	scanf("%d", &val);
+
+	while (val != -1) {
+		
+
+
+		scanf("%d", &val);
+		printf("Input a value to insert into the tree (-1 to stop) \n");
+	}
 
 	return 0;
 }
@@ -84,6 +97,15 @@ void inorderPrint(node * root) {
 	inorderPrint(root->r);
 
 
+
+}
+
+void freeTree(node * root) {
+	if (root == NULL) return;
+
+	freeTree(root->l);
+	freeTree(root->r);
+	free(root);
 
 }
 
