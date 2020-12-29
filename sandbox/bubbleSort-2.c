@@ -1,5 +1,3 @@
-/* I was able to code it without looking at any resources! */
-
 #include "sorting_boilerplate.h"
 
 void bubbleSort(int * arr);
@@ -21,7 +19,7 @@ int main() {
 
 
 void bubbleSort(int * arr) {
-	for ( int i = 0; i < N - 1; i++) {
+	for (int i = 0; i < N - 1; i++) {
 		int swapped = 0;
 
 		for (int j = 0; j < N - i - 1; j++) {

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 // Pre-processor directives
-#define N 1000000
+#define N 100000
 
 // Function declarations
 int * generateList();
