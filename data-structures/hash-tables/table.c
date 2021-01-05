@@ -23,12 +23,12 @@
 #define HASH(x) (x % N) // Hash function
 
 #define LINEAR_PROBING
-#define QUAD_PROBING
-#define DOUB_HASH
+//#define QUAD_PROBING
+//#define DOUB_HASH
 
 // Function delcarations
 void printTable(int * arr, int size);
-void insert(int val);
+void insert(int val, int * arr);
 
 int main() {
 	int * table = calloc(N, sizeof(int));
@@ -39,7 +39,7 @@ int main() {
 		printf("Input value: ");
 		scanf("%d", &tmp);
 		
-		insert(tmp);
+		insert(tmp, table);
 
 		printf("\n");
 		printTable(table, N);
@@ -60,12 +60,36 @@ void printTable(int * arr, int size) {
 	printf("\n");
 }
 
-void insert(int val) {
+void insert(int val, int * arr) {
+	int hash = HASH(val), i = 0;
+	
+	while (1) {
+		if (arr[hash] != 0) { // Collision detected
+#ifdef LINEAR_PROBING
+			if (hash + i > N - 1 || hash == N - 1) {
+				i = 0 - HASH(val);
+				hash = HASH(val) + i;	
+			}
 
+			else {
+				i++;
+				hash = HASH(val) + i;	
+			}
 
+			printf("Hash is: %d. i is : %d\n", hash, i);
+#endif
 
+		}
 
+		else {
+			arr[hash] = val;
+			break;
 
+		}
+
+		printf("Got here dawg ");
+		printf("Hash is: %d. i is : %d\n", hash, i);
+	}
 }
 
 
