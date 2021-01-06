@@ -15,20 +15,18 @@ int main() {
 
 
 void mergeSort(int * arr, int left, int right) {
-	if (l < r) {
-		int middle = (l + r -1) / 2;
+	if (left < right) {
+		int middle = (left + right -1) / 2;
 
 		mergeSort(arr, left, middle);
 		mergeSort(arr, middle + 1, right);
 
 		merge(arr, left, middle, right);
-
-
-
 	}
 }
 
 void merge(int * arr, int left, middle, right) {
+	
 
 
 
