@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 100
+#define N 10
 
 // Function declarations
 void printList(int * arr, int size);
