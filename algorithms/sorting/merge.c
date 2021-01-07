@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 100
+#define N 10
 
 // Function declarations
 void printList(int * arr, int size);
@@ -110,6 +110,10 @@ void merge(int * arr, int l, int m, int r) {
 		k++;
 
 	}
+
+	/* Only one of the following while loops will go
+	 because to break the previous while loop, either
+	 j or i has grown too large*/ 
 
 	/* Copy the remaining elements of L[], if there are any */
 	while (i < n1) {
