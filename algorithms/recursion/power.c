@@ -4,7 +4,7 @@ int power(int base, int pow);
 int power2(int base, int pow);
 
 int main() {
-	printf("2^3 = %d\n", power(2, 3));
+	printf("2^6 = %d\n", power(2, 6));
 	printf("1^0 = %d\n", power(1, 0));
 	printf("3^3 = %d\n", power(3, 3));
 
