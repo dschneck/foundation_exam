@@ -29,12 +29,17 @@ Node * createNode();
 void addString(Node * root, char * word);
 void printAll(Node * root, char * word, int index);
 void freeTrie(Node * root);
+int countStringsWithLetter(Node * root, char alpha);
 
 // Main function
 int main() {
 	Node * root = createNode();
 
-	addString(root, "david");
+	addString(root, "apple");
+	addString(root, "avacodo");
+	addString(root, "persimmon");
+
+	printf("%d is the number of times a is in the trie\n", countStringsWithLetter(root, 'a'));
 
 	// Create a buffer to store and output a word
 	char buff[100 + 1];
@@ -118,6 +123,31 @@ void freeTrie(Node * root) {
 }
 
 
+// Function from a past foundation exam
+// Doesn't work with my implementation of a trie
+// i guess
+int countStringsWithLetter(Node * root, char alpha) {
+	int total = 0;
+
+	if (root == NULL) {
+		return 0;
+	}
+
+	for (int i = 0; i < 26; i++) {
+		if (i == alpha - 'a') {
+			if (root->children[i] != NULL) total += (root->children[i])->data;
+
+		}
+
+		else {
+			total += countStringsWithLetter(root->children[i], alpha);
+		}
+
+	}
+
+	return total;
+	
+}
 
 
 
